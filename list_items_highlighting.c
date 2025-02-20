@@ -41,7 +41,7 @@ int main()
 
 void draw_menu() {
     for (u_char i = 0; i < count; i++) {
-        printf("\e[%d;1H", i + 1); // Moving the cursor
+        printf("\e[%d;1H", i + 1);
         if (i == selected_index) {
             printf(">");
             wprintf(L"%s", files[i]);
@@ -101,46 +101,46 @@ void handle_input() {
 
 void get_catalog()
 {
-    size_t capacity = INITIAL_ROWS; // Начальная емкость массива
+    u_char capacity = INITIAL_ROWS; // initial capacity of the array
 
     files = malloc(capacity * sizeof(wchar_t *));
     if (!files) {
-        perror("Ошибка выделения памяти");
+        perror("Error: memory allocation failed");
         return;
     }
 
     DIR *dir = opendir(path);
     if (!dir) {
-        perror("Ошибка открытия каталога");
+        perror("Error: catalog opening failed");
         free(files);
         return;
     }
 
     struct dirent *entry;
     while ((entry = readdir(dir)) != NULL) {
-        // Преобразуем `char` в `wchar_t`
+        // convert `char` into` wchar_t`
         wchar_t wname[NAME_SIZE];
         mbstowcs(wname, entry->d_name, NAME_SIZE);
  
-        // Если массив переполнен, увеличиваем его размер
+        // If the array is crowded, increase its size
         if (count >= capacity) {
             capacity *= 2;
             files = realloc(files, capacity * sizeof(wchar_t *));
             if (!files) {
-                perror("Ошибка перераспределения памяти");
+                perror("Error: memory allocation failed");
                 closedir(dir);
                 return;
             }
         }
 
-        // Выделяем память под имя файла и копируем его
+        // allocate memory under the name of the file and copy it
         files[count] = malloc(NAME_SIZE * sizeof(wchar_t));
         if (!files[count]) {
-            perror("Ошибка выделения памяти для имени");
+            perror("Error: memory allocation failed");
             break;
         }
         wcsncpy(files[count], wname, NAME_SIZE - 1);
-        files[count][NAME_SIZE - 1] = L'\0'; // Гарантируем завершение строки
+        files[count][NAME_SIZE - 1] = L'\0';
         count++;
     }
     closedir(dir);
