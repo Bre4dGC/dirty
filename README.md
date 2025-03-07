@@ -11,7 +11,7 @@ A lightweight console-based file manager built with C and PDcurses.
 git clone https://github.com/Bre4dGC/dotFile.git
 cd dotFile
 make
-./dotFile
+make run
 ```
 ## Dependencies
 - [GCC](https://gcc.gnu.org/) or [(MinGW for Windows)](https://www.mingw-w64.org/)
