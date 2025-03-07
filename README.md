@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-# Compilation
-### `gcc frame_printing.c -o frame_printing; .\frame_printing`
-### `gcc list_items_highlighting.c -o list_items_highlighting; .\list_items_highlighting`
-### `Ctrl + C` for stop
-=======
 # dotFile
 A lightweight console-based file manager built with C and PDcurses.
 ## Features
@@ -29,4 +23,3 @@ make
 - `:command` - Execute commands
 ## License
 MIT License
->>>>>>> c5ca92e (built architecture for the project)
