@@ -1,18 +1,4 @@
-CC = gcc
-CFLAGS = -Wall -Wextra -g -pedantic -std=c11 -I "include/"
-LDFLAGS = "include/PDcurses/wincon/pdcurses.a" -lpdcurses
-
-SRC  = src/main.c src/ui.c src/navigation.c src/file_ops.c src/clipboard.c src/commands.c src/hotkeys.c src/config.c
-OBJ = $(SRC:src/%.c=build/%.o)
-TARGET = bin\dotFile.exe
-
-all: $(TARGET)
-
-$(TARGET): $(OBJ)
-	$(CC) $(OBJ) -o $(TARGET) $(LDFLAGS)
-
-build/%.o: src/%.c
-	$(CC) $(CFLAGS) -c $< -o $@// json_parser.c
+// json_parser.c
 #include "json_parser.h"
 
 // Парсинг JSON строки
@@ -22,7 +8,7 @@ JsonValue* parseJson(const char* json) {
 }
 
 // Пропуск пробелов и табуляций
-const char* skipWhitespace(const char* json) {
+const char* skipWhitespace(const char *json) {
     while (*json && isspace(*json)) {
         json++;
     }
@@ -30,10 +16,10 @@ const char* skipWhitespace(const char* json) {
 }
 
 // Парсинг JSON значения
-JsonValue* parseValue(const char** json) {
+JsonValue* parseValue(const char **json) {
     *json = skipWhitespace(*json);
     
-    JsonValue* value = (JsonValue*)malloc(sizeof(JsonValue));
+    JsonValue* value = (JsonValue *)malloc(sizeof(JsonValue));
     if (!value) return NULL;
     
     // Определяем тип значения по первому символу
@@ -75,7 +61,7 @@ JsonValue* parseValue(const char** json) {
             }
             
             int len = *json - start;
-            value->data.string = (char*)malloc(len + 1);
+            value->data.string = (char *)malloc(len + 1);
             if (value->data.string) {
                 strncpy(value->data.string, start, len);
                 value->data.string[len] = '\0';
@@ -129,10 +115,10 @@ JsonValue* parseValue(const char** json) {
                 (*json)++; // Пропускаем ':'
                 
                 // Парсим значение
-                JsonValue* pairValue = parseValue(json);
+                JsonValue *pairValue = parseValue(json);
                 
                 // Создаем новую пару ключ-значение
-                JsonPair* pair = (JsonPair*)malloc(sizeof(JsonPair));
+                JsonPair *pair = (JsonPair *)malloc(sizeof(JsonPair));
                 if (pair) {
                     pair->key = key;
                     pair->value = pairValue;
@@ -169,10 +155,10 @@ JsonValue* parseValue(const char** json) {
             
             do {
                 // Парсим элемент массива
-                JsonValue* elementValue = parseValue(json);
+                JsonValue *elementValue = parseValue(json);
                 
                 // Создаем новый элемент массива
-                JsonElement* element = (JsonElement*)malloc(sizeof(JsonElement));
+                JsonElement *element = (JsonElement *)malloc(sizeof(JsonElement));
                 if (element) {
                     element->value = elementValue;
                     element->next = NULL;
@@ -202,12 +188,11 @@ JsonValue* parseValue(const char** json) {
             }
             break;
     }
-    
     return value;
 }
 
 // Освобождение памяти
-void freeJsonValue(JsonValue* value) {
+void freeJsonValue(JsonValue *value) {
     if (!value) return;
     
     switch (value->type) {
@@ -216,9 +201,9 @@ void freeJsonValue(JsonValue* value) {
             break;
             
         case JSON_ARRAY: {
-            JsonElement* element = value->data.array;
+            JsonElement *element = value->data.array;
             while (element) {
-                JsonElement* next = element->next;
+                JsonElement *next = element->next;
                 freeJsonValue(element->value);
                 free(element);
                 element = next;
@@ -227,7 +212,7 @@ void freeJsonValue(JsonValue* value) {
         }
             
         case JSON_OBJECT: {
-            JsonPair* pair = value->data.object;
+            JsonPair *pair = value->data.object;
             while (pair) {
                 JsonPair* next = pair->next;
                 free(pair->key);
@@ -246,7 +231,7 @@ void freeJsonValue(JsonValue* value) {
 }
 
 // Вспомогательные функции для работы с JSON
-const char* jsonGetString(JsonValue* value, const char* key) {
+const char* jsonGetString(JsonValue *value, const char *key) {
     if (!value || value->type != JSON_OBJECT) return NULL;
     
     JsonPair* pair = value->data.object;
@@ -260,7 +245,7 @@ const char* jsonGetString(JsonValue* value, const char* key) {
     return NULL;
 }
 
-double jsonGetNumber(JsonValue* value, const char* key) {
+double jsonGetNumber(JsonValue *value, const char *key) {
     if (!value || value->type != JSON_OBJECT) return 0;
     
     JsonPair* pair = value->data.object;
@@ -274,10 +259,10 @@ double jsonGetNumber(JsonValue* value, const char* key) {
     return 0;
 }
 
-int jsonGetBool(JsonValue* value, const char* key) {
+int jsonGetBool(JsonValue *value, const char *key) {
     if (!value || value->type != JSON_OBJECT) return 0;
     
-    JsonPair* pair = value->data.object;
+    JsonPair *pair = value->data.object;
     while (pair) {
         if (strcmp(pair->key, key) == 0 && pair->value->type == JSON_BOOL) {
             return pair->value->data.boolean;
@@ -288,10 +273,10 @@ int jsonGetBool(JsonValue* value, const char* key) {
     return 0;
 }
 
-JsonValue* jsonGetObject(JsonValue* value, const char* key) {
+JsonValue* jsonGetObject(JsonValue *value, const char *key) {
     if (!value || value->type != JSON_OBJECT) return NULL;
     
-    JsonPair* pair = value->data.object;
+    JsonPair *pair = value->data.object;
     while (pair) {
         if (strcmp(pair->key, key) == 0 && pair->value->type == JSON_OBJECT) {
             return pair->value;
@@ -302,10 +287,10 @@ JsonValue* jsonGetObject(JsonValue* value, const char* key) {
     return NULL;
 }
 
-JsonValue* jsonGetArray(JsonValue* value, const char* key) {
+JsonValue* jsonGetArray(JsonValue *value, const char *key) {
     if (!value || value->type != JSON_OBJECT) return NULL;
     
-    JsonPair* pair = value->data.object;
+    JsonPair *pair = value->data.object;
     while (pair) {
         if (strcmp(pair->key, key) == 0 && pair->value->type == JSON_ARRAY) {
             return pair->value;
@@ -316,20 +301,13 @@ JsonValue* jsonGetArray(JsonValue* value, const char* key) {
     return NULL;
 }
 
-JsonValue* jsonGetArrayElement(JsonValue* array, int index) {
+JsonValue* jsonGetArrayElement(JsonValue *array, int index) {
     if (!array || array->type != JSON_ARRAY) return NULL;
     
-    JsonElement* element = array->data.array;
+    JsonElement *element = array->data.array;
     for (int i = 0; i < index && element; i++) {
         element = element->next;
     }
     
     return element ? element->value : NULL;
 }
-
-clean:
-	-del /Q build\*.o
-	-del $(TARGET)
-
-run: all
-	.\$(TARGET)
