@@ -1,5 +1,4 @@
 #include "panels.h"
-#include "file_ops.h"
 
 void get_screen_size()
 {
@@ -22,15 +21,24 @@ void init_windows()
     clipboard_win   = newwin(winfo_height, winfo_width, winfo_height * 2, wmain_width);
 }
 
-void render_directory()
-{
-    wclear(directory_win);
-    box(directory_win, 0, 0);
-    mvwprintw(info_win, 0, wmain_width / 2, "| %s |", "random path");
-    wrefresh(info_win);
+void display_directory(WINDOW *win, dir_t *content, int scroll_offset) {
+    wclear(win);
+    box(win, 0, 0);
+
+    int max_y, max_x;
+    getmaxyx(win, max_y, max_x);
+
+    for (int i = 0; i < content->count && i < max_y - 2; i++) {
+        int index = i + scroll_offset;
+        if (index >= content->count) break;
+
+        mvwprintw(win, i + 1, 1, "%s", content->items[index]);
+    }
+
+    wrefresh(win);
 }
 
-void render_info()
+void display_info()
 {
     wclear(info_win);
     box(info_win, 0, 0);
@@ -38,7 +46,7 @@ void render_info()
     wrefresh(info_win);
 }
 
-void render_processes()
+void display_processes()
 {
     wclear(processes_win);
     box(processes_win, 0, 0);
@@ -46,7 +54,7 @@ void render_processes()
     wrefresh(processes_win);
 }
 
-void render_clipboard()
+void display_clipboard()
 {
     wclear(clipboard_win);
     box(clipboard_win, 0, 0);

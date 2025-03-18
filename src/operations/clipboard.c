@@ -1,31 +1,38 @@
 #include "clipboard.h"
 #include "file_ops.h"
 
-clipboard_t clipboard = {0, {NULL}};
+clipboard_t clipboard = {0, {NULL}}; // Initialization of the clipboard structure
 
-void cut_file(file_t *files)
+void cut_file(file_t *file)
 {
-    // TODO: Implement this function
-    // This function should add the specified files to the clipboard and remove them from the current directory.
+    copy_file(file);     // Copying a file
+    file->is_cut = true; // Mark as cut
 }
 
-void copy_file(file_t *files)
+void copy_file(file_t *file)
 {
-    // TODO: Implement this function
-    // This function should add the specified files to the clipboard.
+    if (clipboard.count < MAX_CLIPBOARD_SIZE) {
+        clipboard.files[clipboard.count] = *file;
+    } else {
+        clipboard.files[0] = *file;
+    }
 }
 
-void paste_file(file_t *file, dir_t *to_dir)
+void paste_file(int buff_index, dir_t *to_dir)
 {
-    // TODO: Implement this function
-    // This function should paste the files from the clipboard to the specified directory.
-    // This function should also clear the clipboard after pasting the files.
+    file_t file = clipboard.files[buff_index];
+    char new_path[256];
+    snprintf(new_path, sizeof(new_path), "%s/%s", to_dir->path, file.name);
+    copy_file_to_path(file.path, new_path); // Copying a file to a new directory
+    if(file.is_cut) {
+        delete_file(&file);
+    }
 }
 
 void free_clipboard()
 {
     for (int index = 0; index < clipboard.count; index++) {
-        // clipboard.files[index] = NULL; FIXME: a value of type "void *" cannot be assigned to an entity of type "file_t"
+        clipboard.files[index] = (file_t){0}; // Free of file_t structure
     }
     clipboard.count = 0;
 }

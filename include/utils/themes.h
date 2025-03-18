@@ -1,0 +1,8 @@
+
+
+typedef struct {
+    char *name;   // Name of theme
+    int bg_color; // Background color
+    int fg_color; // Foreground color
+    int hl_color; // Highlighting color
+} theme_t;
