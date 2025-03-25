@@ -1,8 +1,8 @@
 #ifndef UI_H
 #define UI_H
 
-#include "input.h"
-#include "panels.h"
+#include "ui/input.h"
+#include "ui/panels.h"
 
 void init_ui();
 void cleanup_ui();

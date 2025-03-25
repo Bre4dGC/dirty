@@ -1,46 +1,122 @@
-#include <curses.h>
-#include "input.h"
-#include "dir_ops.h"
+#include <PDCurses/curses.h>
+#include "ui/input.h"
+#include "ui/panels.h"
+#include "operations/dir_ops.h"
 
-cursor_t cursor = {0, NULL, NULL};
+// Текущая активная панель
+panel_type_t active_panel = PANEL_DIRECTORY;
 
-void navigate(int action)
-{
-    switch (action)
-    {
+// Текущие директории
+dir_t *current_dir = NULL;
+dir_t *content_dir = NULL;
+
+void navigate(int key) {
+    switch (key) {
         case KEY_UP:
-            move_up();
+            if (active_panel == PANEL_DIRECTORY && current_dir) {
+                if (current_dir->scroll_offset > 0)
+                    current_dir->scroll_offset--;
+                display_directory(directory_win, current_dir, current_dir->scroll_offset);
+                
+                // Обновляем информацию о выбранном элементе
+                item_t *selected_item = &current_dir->items[current_dir->scroll_offset];
+                display_info(selected_item);
+            } else if (active_panel == PANEL_CONTENT && content_dir) {
+                if (content_dir->scroll_offset > 0)
+                    content_dir->scroll_offset--;
+                display_content(content_win, content_dir, content_dir->scroll_offset);
+                
+                // Обновляем информацию о выбранном элементе
+                item_t *selected_item = &content_dir->items[content_dir->scroll_offset];
+                display_info(selected_item);
+            }
             break;
+            
         case KEY_DOWN:
-            move_down();
+            if (active_panel == PANEL_DIRECTORY && current_dir) {
+                if (current_dir->scroll_offset < current_dir->count - 1)
+                    current_dir->scroll_offset++;
+                display_directory(directory_win, current_dir, current_dir->scroll_offset);
+                
+                // Обновляем информацию о выбранном элементе
+                item_t *selected_item = &current_dir->items[current_dir->scroll_offset];
+                display_info(selected_item);
+            } else if (active_panel == PANEL_CONTENT && content_dir) {
+                if (content_dir->scroll_offset < content_dir->count - 1)
+                    content_dir->scroll_offset++;
+                display_content(content_win, content_dir, content_dir->scroll_offset);
+                
+                // Обновляем информацию о выбранном элементе
+                item_t *selected_item = &content_dir->items[content_dir->scroll_offset];
+                display_info(selected_item);
+            }
             break;
+            
         case KEY_LEFT:
-            move_left();
+            if (active_panel == PANEL_CONTENT) {
+                active_panel = PANEL_DIRECTORY;
+                // Выделяем активную панель
+                wattron(directory_win, A_BOLD);
+                box(directory_win, 0, 0);
+                wattroff(directory_win, A_BOLD);
+                wrefresh(directory_win);
+                
+                box(content_win, 0, 0);
+                wrefresh(content_win);
+            }
             break;
+            
         case KEY_RIGHT:
-            move_right();
-             break;
-        case KEY_ENTER:
-            // enter_dir();
+            if (active_panel == PANEL_DIRECTORY) {
+                active_panel = PANEL_CONTENT;
+                // Выделяем активную панель
+                wattron(content_win, A_BOLD);
+                box(content_win, 0, 0);
+                wattroff(content_win, A_BOLD);
+                wrefresh(content_win);
+                
+                box(directory_win, 0, 0);
+                wrefresh(directory_win);
+            }
             break;
-        case KEY_BACKSPACE:
-            // leave_dir();
+            
+        case '\n': // Enter key
+            if (active_panel == PANEL_DIRECTORY && current_dir) {
+                // Получаем выбранный элемент
+                item_t *selected_item = &current_dir->items[current_dir->scroll_offset];
+                
+                if (is_directory(selected_item) && is_dir(selected_item->data.dir->path)) {
+                    // Если это директория, открываем ее
+                    enter_dir(selected_item->data.dir);
+                    
+                    // Обновляем содержимое правой панели
+                    if (selected_item->data.dir->count > 0) {
+                        content_dir = selected_item->data.dir->items[0].data.dir;
+                        display_content(content_win, content_dir, 0);
+                    }
+                }
+            } else if (active_panel == PANEL_CONTENT && content_dir) {
+                // Получаем выбранный элемент
+                item_t *selected_item = &content_dir->items[content_dir->scroll_offset];
+                
+                if (is_directory(selected_item) && is_dir(selected_item->data.dir->path)) {
+                    // Если это директория, перемещаем текущую директорию в левую панель
+                    current_dir = content_dir;
+                    display_directory(directory_win, current_dir, 0);
+                    
+                    // Открываем выбранную директорию в правой панели
+                    content_dir = selected_item->data.dir;
+                    display_content(content_win, content_dir, 0);
+                }
+            }
             break;
-    }
-}
-
-void move_up()
-{
-    if(cursor.y_pos > 0) {
-        cursor.y_pos--;
-    }
-    // return list_dir[catalog_cursor.y_pos];
-}
-
-void move_down()
-{
-    if(cursor.y_pos > 0) {
-        cursor.y_pos++;
+            
+        case ':': // Command mode
+            active_panel = PANEL_COMMAND;
+            // Очищаем командную строку и ждем ввода
+            display_command_line("");
+            // Здесь нужно добавить логику для ввода команды
+            break;
     }
 }
 

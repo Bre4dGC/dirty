@@ -1,4 +1,4 @@
-#include <curses.h>
+#include <PDCurses/curses.h>
 #include "ui.h"
 
 void init_ui()

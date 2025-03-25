@@ -1,14 +1,23 @@
 #ifndef INPUT_H
 #define INPUT_H
 
-#include <curses.h>
+#include <PDCurses/curses.h>
+#include "operations/dir_ops.h"
 
-typedef struct {
-    int y_pos;       // Y position of the cursor
-    cursor_t *left;  // Left cursor
-    cursor_t *right; // Right cursor
-} cursor_t;
+// Текущая активная панель
+typedef enum {
+    PANEL_DIRECTORY,
+    PANEL_CONTENT,
+    PANEL_COMMAND
+} panel_type_t;
 
-void navigate(int action);
+extern panel_type_t active_panel;
+
+// Текущие директории
+extern dir_t *current_dir;
+extern dir_t *content_dir;
+
+void navigate(int key);
+void process_command(const char *command);
 
 #endif // INPUT_H

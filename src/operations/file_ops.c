@@ -1,4 +1,4 @@
-#include "file_ops.h"
+#include "operations/file_ops.h"
 
 void create_file(const char *path, const char *name)
 {
@@ -7,7 +7,10 @@ void create_file(const char *path, const char *name)
         return;
     }
 
-    if(fopen(("%s/%s",path, name), "w") == NULL) {
+    char full_path[256];
+    snprintf(full_path, sizeof(full_path), "%s/%s", path, name);
+    
+    if(fopen(full_path, "w") == NULL) {
         fprintf(stderr, "ERROR: Unable to create file.\n");
     }
 }
@@ -43,7 +46,10 @@ void delete_file(file_t *file)
         return;
     }
 
-    if (remove(("%s%s", file->path, file->name)) == 1) {
+    char full_path[256];
+    snprintf(full_path, sizeof(full_path), "%s/%s", file->path, file->name);
+    
+    if (remove(full_path) == 1) {
         fprintf(stderr, "ERROR: Unable to delete the file.\n");
         return;
     }

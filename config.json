@@ -1,0 +1,41 @@
+{
+    "font": "Consolas",
+    "curr_theme": "Dark",
+    "home_path": "C/Users/username/Documents/",
+    "themes": 
+    [
+        {
+            "name": "Dark",
+            "bg_color": "#000000",
+            "fg_color": "#FFFFFF",
+            "hl_color": "#FFFFFF"
+        },
+        {
+            "name": "Light",
+            "bg_color": "#000000",
+            "fg_color": "#FFFFFF",
+            "hl_color": "#FFFFFF"
+        },
+        {
+            "name": "Monokai",
+            "bg_color": "#000000",
+            "fg_color": "#FFFFFF",
+            "hl_color": "#FFFFFF"
+        }   
+    ],
+    "hotkeys": 
+    [
+        {
+            "keys": "Ctrl+O",
+            "action": "open_file"
+        },
+        {
+            "keys": "Ctrl+N",
+            "action": "new_file"
+        },
+        {
+            "keys": "Ctrl+X",
+            "action": "cut"
+        }  
+    ]
+}

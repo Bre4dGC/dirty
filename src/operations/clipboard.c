@@ -1,5 +1,5 @@
-#include "clipboard.h"
-#include "file_ops.h"
+#include "operations/clipboard.h"
+#include "operations/file_ops.h"
 
 clipboard_t clipboard = {0, {NULL}}; // Initialization of the clipboard structure
 
@@ -23,7 +23,7 @@ void paste_file(int buff_index, dir_t *to_dir)
     file_t file = clipboard.files[buff_index];
     char new_path[256];
     snprintf(new_path, sizeof(new_path), "%s/%s", to_dir->path, file.name);
-    copy_file_to_path(file.path, new_path); // Copying a file to a new directory
+    // copy_file_to_path(file.path, new_path); // Copying a file to a new directory
     if(file.is_cut) {
         delete_file(&file);
     }

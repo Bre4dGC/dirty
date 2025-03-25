@@ -1,3 +1,6 @@
+#ifndef PROCESSES_H
+#define PROCESSES_H
+
 #include <windows.h>
 #include <tlhelp32.h>
 #include <stdbool.h>
@@ -17,3 +20,5 @@ bool is_process_running(int pid);                 // Check if a process is runni
 void set_process_priority(int pid, int priority); // Set the priority of a process
 process_t get_process_info(int pid);              // Get information about a process
 void handle_process_error(int error_code);        // Handle process-related errors
+
+#endif // PROCESSES_H

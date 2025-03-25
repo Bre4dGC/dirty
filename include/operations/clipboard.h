@@ -1,8 +1,8 @@
 #ifndef CLIPBOARD_H
 #define CLIPBOARD_H
 
-#include "file_ops.h"
-#include "dir_ops.h"
+#include "operations/file_ops.h"
+#include "operations/dir_ops.h"
 
 #define MAX_CLIPBOARD_SIZE 10 // Maximum number of files in the clipboard
 

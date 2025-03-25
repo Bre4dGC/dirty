@@ -1,4 +1,5 @@
-
+#ifndef THEMES_H
+#define THEMES_H
 
 typedef struct {
     char *name;   // Name of theme
@@ -6,3 +7,5 @@ typedef struct {
     int fg_color; // Foreground color
     int hl_color; // Highlighting color
 } theme_t;
+
+#endif // THEMES_H
