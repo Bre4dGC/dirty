@@ -4,6 +4,7 @@
 int scr_height, scr_width;
 int winfo_width, winfo_height;
 int wmain_height, wmain_width;
+
 WINDOW *directory_win, *content_win, *info_win, *processes_win, *clipboard_win, *commandline_win;
 
 void get_screen_size()
@@ -21,7 +22,7 @@ void init_windows()
     wmain_height = scr_height - 2;
     wmain_width = (scr_width - winfo_width) / 2;
 
-    // Создаем окна с правильными размерами
+    // Creating windows
     directory_win   = newwin(wmain_height, wmain_width, 0, 0);
     content_win     = newwin(wmain_height, wmain_width, 0, wmain_width);
     commandline_win = newwin(2, scr_width - winfo_width, wmain_height, 0);
@@ -29,14 +30,14 @@ void init_windows()
     processes_win   = newwin(winfo_height, winfo_width, winfo_height, scr_width - winfo_width);
     clipboard_win   = newwin(winfo_height, winfo_width, winfo_height * 2, scr_width - winfo_width);
     
-    // Инициализируем цвета, если поддерживаются
+    // Initialize colors, if supported
     if (has_colors()) {
         start_color();
-        init_pair(1, COLOR_WHITE, COLOR_BLUE);    // Для заголовков
-        init_pair(2, COLOR_BLACK, COLOR_WHITE);   // Для выделенных элементов
-        init_pair(3, COLOR_WHITE, COLOR_BLACK);   // Для обычного текста
-        init_pair(4, COLOR_YELLOW, COLOR_BLACK);  // Для директорий
-        init_pair(5, COLOR_GREEN, COLOR_BLACK);   // Для файлов
+        init_pair(1, COLOR_WHITE, COLOR_BLUE);    // For headings
+        init_pair(2, COLOR_BLACK, COLOR_WHITE);   // For selected elements
+        init_pair(3, COLOR_WHITE, COLOR_BLACK);   // For plain text
+        init_pair(4, COLOR_YELLOW, COLOR_BLACK);  // For directories
+        init_pair(5, COLOR_GREEN, COLOR_BLACK);   // For files
     }
 }
 
@@ -48,17 +49,17 @@ void display_directory(WINDOW *win, dir_t *content, int scroll_offset) {
     getmaxyx(win, max_y, max_x);
     (void)max_x; // Suppress unused variable warning
     
-    // Отображаем заголовок окна с путем текущей директории
+    // Display the window title with the path of the current directory
     mvwprintw(win, 0, 2, "| %s |", content->path);
 
     for (int i = 0; i < content->count && i < max_y - 2; i++) {
         int index = i + scroll_offset;
         if (index >= content->count) break;
         
-        // Добавляем префикс для обозначения типа элемента
+        // Add a prefix to indicate the element type
         char prefix = is_directory(&content->items[index]) ? '/' : '.';
         
-        // Выделяем текущий элемент
+        // Select the current element
         if (i == content->scroll_offset) {
             wattron(win, A_REVERSE);
             mvwprintw(win, i + 1, 1, "[%c] %s", prefix, 
@@ -66,14 +67,14 @@ void display_directory(WINDOW *win, dir_t *content, int scroll_offset) {
                 content->items[index].data.dir->name : 
                 content->items[index].data.file->name);
             wattroff(win, A_REVERSE);
-        } else {
+        } 
+        else {
             mvwprintw(win, i + 1, 1, "[%c] %s", prefix, 
                 is_directory(&content->items[index]) ? 
                 content->items[index].data.dir->name : 
                 content->items[index].data.file->name);
         }
     }
-
     wrefresh(win);
 }
 
@@ -95,7 +96,7 @@ void display_info(item_t *item)
         } else if (item->type == ITEM_TYPE_DIR) {
             mvwprintw(info_win, row++, 1, "type%*s",     winfo_width - 5, "folder");
             mvwprintw(info_win, row++, 1, "name%*s",     winfo_width - 5, item->data.dir->name);
-            // Можно добавить больше информации о директории
+            // TODO: add more information about the directory
         }
     }
     
@@ -120,10 +121,11 @@ void display_clipboard(clipboard_t *clipboard)
 
     if (clipboard && clipboard->count > 0) {
         for (int i = 0; i < clipboard->count && i < winfo_height - 2; i++) {
-            char prefix = clipboard->files[i].is_cut ? '-' : '+'; // - для вырезанных, + для скопированных
+            char prefix = clipboard->files[i].is_cut ? '-' : '+'; // - for cut, + for copied
             mvwprintw(clipboard_win, i + 1, 1, "[%c] %s", prefix, clipboard->files[i].name);
         }
-    } else {
+    } 
+    else {
         mvwprintw(clipboard_win, 1, 1, "Empty clipboard");
     }
 
@@ -137,7 +139,7 @@ void display_content(WINDOW *win, dir_t *content, int scroll_offset) {
     int max_y, max_x;
     getmaxyx(win, max_y, max_x);
     
-    // Отображаем заголовок окна
+    // Display window title
     mvwprintw(win, 0, 2, "| %s |", content ? content->path : "Empty");
 
     if (content) {
@@ -145,10 +147,10 @@ void display_content(WINDOW *win, dir_t *content, int scroll_offset) {
             int index = i + scroll_offset;
             if (index >= content->count) break;
             
-            // Добавляем префикс для обозначения типа элемента
+            // Add a prefix to indicate the element type
             char prefix = is_directory(&content->items[index]) ? '/' : '.';
             
-            // Выделяем текущий элемент
+            // Select the current element
             if (i == content->scroll_offset) {
                 wattron(win, A_REVERSE);
                 mvwprintw(win, i + 1, 1, "[%c] %s", prefix, 
@@ -156,7 +158,8 @@ void display_content(WINDOW *win, dir_t *content, int scroll_offset) {
                     content->items[index].data.dir->name : 
                     content->items[index].data.file->name);
                 wattroff(win, A_REVERSE);
-            } else {
+            } 
+            else {
                 mvwprintw(win, i + 1, 1, "[%c] %s", prefix, 
                     is_directory(&content->items[index]) ? 
                     content->items[index].data.dir->name : 
@@ -175,7 +178,8 @@ void display_command_line(const char *command) {
     if (command && strlen(command) > 0) {
         mvwprintw(commandline_win, 0, 1, ":");
         mvwprintw(commandline_win, 0, 2, "%s", command);
-    } else {
+    } 
+    else {
         mvwprintw(commandline_win, 0, 1, "Press : to enter command mode");
     }
     

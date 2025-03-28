@@ -3,20 +3,12 @@
 
 #include "ui/input.h"
 #include "ui/panels.h"
+#include "operations/dir_ops.h"
 
 void init_ui();
 void cleanup_ui();
-
-void display_main_menu();
-void display_file_menu();
-
-void display_error(char *message);
-void display_success(char *message);
-
-void display_dir_panel();
-void display_file_panel();
-
-void display_input_prompt(char *message);
-void display_input_error(char *message);
+void run_ui_loop();
+int get_user_input();
+void load_initial_content(const char *path);
 
 #endif // UI_H

@@ -5,23 +5,23 @@
 
 int main()
 {
-    // Загрузка конфигурации
+    // Configuration loading
     config_t *config = load_config("config.json");
     if (!config) {
         fprintf(stderr, "Failed to load configuration\n");
         return 1;
     }
     
-    // Инициализация UI
+    // UI initialization
     init_ui();
     
-    // Основной цикл программы
+    // Main program cycle
     int ch;
     while ((ch = getch()) != 'q') {
         navigate(ch);
     }
     
-    // Очистка ресурсов
+    // Resource cleansing
     cleanup_ui();
     free_config(config);
     

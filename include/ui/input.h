@@ -4,7 +4,7 @@
 #include <PDCurses/curses.h>
 #include "operations/dir_ops.h"
 
-// Текущая активная панель
+// Current active panel
 typedef enum {
     PANEL_DIRECTORY,
     PANEL_CONTENT,
@@ -13,7 +13,7 @@ typedef enum {
 
 extern panel_type_t active_panel;
 
-// Текущие директории
+// Current directories
 extern dir_t *current_dir;
 extern dir_t *content_dir;
 

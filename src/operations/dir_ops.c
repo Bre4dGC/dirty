@@ -1,7 +1,7 @@
 #include "operations/dir_ops.h"
 #include <stdlib.h>
 #include <string.h>
-#include <limits.h>  // Для PATH_MAX
+#include <limits.h>  // for PATH_MAX
 
 /* Function for checking if path is directory */
 bool is_dir(const char *path) 
@@ -24,7 +24,7 @@ void change_dir(const char *path)
 
 void create_item(dir_t *content, item_t *item, const char *name, const char *path, item_type_t type)
 {
-    (void)item; // Подавляем предупреждение о неиспользуемом параметре
+    (void)item; // Suppress warning about unused parameter
     
     content->items = (item_t *)realloc(content->items, sizeof(item_t) * (content->count + 1));
     if (!content->items) {
@@ -42,7 +42,8 @@ void create_item(dir_t *content, item_t *item, const char *name, const char *pat
         }
         content->items[content->count].data.dir->name = strdup(name);
         content->items[content->count].data.dir->path = strdup(path);
-    } else {
+    } 
+    else {
         content->items[content->count].data.file = (file_t *)calloc(1, sizeof(file_t));
         if (!content->items[content->count].data.file) {
             perror("ERROR: Failed to allocate memory for file");
@@ -73,8 +74,8 @@ dir_t *get_directory_content(const char *path)
         return NULL;
     }
     
-    content->path = strdup(path);
     content->name = strdup(path); // Можно извлечь имя директории из пути
+    content->path = strdup(path);
     content->count = 0;
     content->scroll_offset = 0;
     content->items = NULL;
@@ -85,10 +86,10 @@ dir_t *get_directory_content(const char *path)
     /* Read directory entries */
     while ((entry = readdir(dir)) != NULL) 
     {
-        // Увеличиваем размер буфера для безопасности
+        /* Увеличиваем размер буфера для безопасности*/
         char full_path[PATH_MAX];
         
-        // Проверяем, что пути не слишком длинные
+        /* Проверяем, что пути не слишком длинные*/
         if (strlen(path) + strlen(entry->d_name) + 2 > PATH_MAX) {
             fprintf(stderr, "ERROR: Path too long: %s/%s\n", path, entry->d_name);
             continue;
@@ -118,17 +119,17 @@ void enter_dir(dir_t *enter)
         free(enter->previus);
     }
 
-    // Получаем содержимое директории
+    // Get the contents of the directory
     dir_t *content = get_directory_content(enter->path);
     if (!content) {
         perror("ERROR: Failed to get directory content");
         return;
     }
     
-    // Обновляем текущую директорию
+    // Update the current directory
     content->previus = enter;
     
-    // Здесь нужно обновить UI с новым содержимым
+    // TODO: update the UI with new content
     // display_directory(directory_win, content, 0);
 }
 
@@ -138,7 +139,7 @@ void create_dir(const char *path, const char *name)
     /* Create full path */
     char full_path[PATH_MAX];
     
-    // Проверяем, что пути не слишком длинные
+    // Checking that the paths are not too long
     if (strlen(path) + strlen(name) + 2 > PATH_MAX) {
         fprintf(stderr, "ERROR: Path too long: %s/%s\n", path, name);
         return;
