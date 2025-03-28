@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -g -pedantic -Wunused-but-set-variable -std=c11 -I "include/"
-LDFLAGS = "C:/msys64/mingw64/include/PDCurses/wincon/pdcurses.a" -lpdcurses -L/path/to/cjson/lib -lcjson
+LDFLAGS = "/include/PDCurses/wincon/pdcurses.a" -lpdcurses -L"/include/cjson/lib" -lcjson
 
 SRC = src/main.c \
 	  src/ui.c \
@@ -10,13 +10,14 @@ SRC = src/main.c \
 	  src/operations/file_ops.c \
 	  src/operations/clipboard.c \
 	  src/operations/commands.c \
-	  src/ui/panels.c \
 	  src/ui/input.c \
+	  src/ui/panels.c \
+	  src/utils/cfg_parser.c \
 	  src/utils/config.c \
 	  src/utils/hotkeys_parser.c \
-	  src/utils/cfg_parser.c
+	  src/utils/json.c
 OBJ = $(SRC:src/%.c=build/%.o)
-TARGET = bin/dotFile.exe
+TARGET = bin/dirty.exe
 
 # Create necessary directories
 DIRECTORIES = bin $(sort $(dir $(OBJ)))
