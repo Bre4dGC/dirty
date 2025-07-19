@@ -1,8 +1,8 @@
 #include <stddef.h> // For NULL
 #include <string.h>
 
-#include "include/clipboard.h"
-#include "include/logs.h"
+#include "clipboard.h"
+#include "logs.h"
 
 clipboard_t clipboard = {0};
 
@@ -31,9 +31,9 @@ static int clipboard_add_item(const char *path, const bool is_cut)
                 {
                         return log_status(ALREADY_EXISTS_ERROR, "Clipboard item");
                 }
-        }
 
-        clipboard.items[clipboard.count++] = clip;
+                clipboard.items[clipboard.count++] = clip;
+        }
         return log_status(SUCCESS, "Clipboard item added");
 }
 
@@ -49,7 +49,7 @@ int cut_item(const char *path)
 
 int paste_item(const char *path, const uint8_t index)
 {
-        if (index >= clipboard.count)
+        if (index > clipboard.count)
         {
                 return log_status(HANDLE_ERROR, "Clipboard index out of bounds");
         }

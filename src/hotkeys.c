@@ -1,5 +1,5 @@
-#include "include/hotkeys.h"
-#include "include/logs.h"
+#include "hotkeys.h"
+#include "logs.h"
 
 int hotkey_execute(const hotkey_t hotkey)
 {

@@ -2,8 +2,8 @@
 #include <stdbool.h>
 #include <unistd.h>
 
-#include "include/item.h"
-#include "include/logs.h"
+#include "file-system.h"
+#include "logs.h"
 
 int open_item(const char *item_path, const bool is_dir)
 {
@@ -30,7 +30,7 @@ int create_item(const char *item_path, const char *name, const bool is_dir)
         }
         else
         {
-                FILE *file = fopen(item_path, "w");
+                FILE *file = fopen(item_path, "a");
                 if (!file)
                 {
                         return log_status(EXECUTE_ERROR, "Create file");

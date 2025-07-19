@@ -1,5 +1,5 @@
-#include "include/commands.h"
-#include "include/logs.h"
+#include "commands.h"
+#include "logs.h"
 
 int command_execute(const command_t command)
 {

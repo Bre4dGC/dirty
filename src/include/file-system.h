@@ -3,7 +3,7 @@
 #include <sys/stat.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include "./errors.h"
+#include "errors.h"
 
 typedef struct
 {

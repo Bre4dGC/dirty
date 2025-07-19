@@ -1,6 +1,6 @@
 #pragma once
 
-#include "./commands.h"
+#include "commands.h"
 
 typedef struct
 {
