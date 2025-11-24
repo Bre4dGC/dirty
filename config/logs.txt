@@ -1,45 +1,147 @@
-Test log message: 123
-[2025-07-19 19:27:01] Success: Test action
-[2025-07-19 19:27:01] Success: Configuration initialized
-[2025-07-19 19:27:01] Success: Configuration loaded
-[2025-07-19 19:27:01] Success: Item created
-[2025-07-19 19:27:01] Success: Item created
-[2025-07-19 19:27:01] Success: Item renamed
-[2025-07-19 19:27:01] Success: Item moved
-[2025-07-19 19:27:01] Success: Item permission changed
-[2025-07-19 19:27:01] Success: Clipboard item added
-[2025-07-19 19:27:01] Success: Clipboard item added
-[2025-07-19 19:27:01] Error: Move item execute failed
-[2025-07-19 19:27:01] Success: Clipboard item pasted
-[2025-07-19 19:27:01] Success: Item removed
-[2025-07-19 19:27:01] Success: Item removed
-Test log message: 123
-[2025-07-19 19:28:56] Success: Test action
-[2025-07-19 19:28:56] Success: Configuration initialized
-[2025-07-19 19:28:56] Success: Configuration loaded
-[2025-07-19 19:28:56] Success: Item created
-[2025-07-19 19:28:56] Success: Item created
-[2025-07-19 19:28:56] Success: Item renamed
-[2025-07-19 19:28:56] Success: Item moved
-[2025-07-19 19:28:56] Success: Item permission changed
-[2025-07-19 19:28:56] Success: Clipboard item added
-[2025-07-19 19:28:56] Success: Clipboard item added
-[2025-07-19 19:28:56] Error: Move item execute failed
-[2025-07-19 19:28:56] Success: Clipboard item pasted
-[2025-07-19 19:28:56] Success: Item removed
-[2025-07-19 19:28:56] Success: Item removed
-Test log message: 123
-[2025-07-19 19:29:00] Success: Test action
-[2025-07-19 19:29:00] Success: Configuration initialized
-[2025-07-19 19:29:00] Success: Configuration loaded
-[2025-07-19 19:29:00] Success: Item created
-[2025-07-19 19:29:00] Success: Item created
-[2025-07-19 19:29:00] Success: Item renamed
-[2025-07-19 19:29:00] Success: Item moved
-[2025-07-19 19:29:00] Success: Item permission changed
-[2025-07-19 19:29:00] Success: Clipboard item added
-[2025-07-19 19:29:00] Success: Clipboard item added
-[2025-07-19 19:29:00] Error: Move item execute failed
-[2025-07-19 19:29:00] Success: Clipboard item pasted
-[2025-07-19 19:29:00] Success: Item removed
-[2025-07-19 19:29:00] Success: Item removed
+[2025-11-24 10:39:35] Success: Log initialized
+[2025-11-24 10:39:35] Success: Configuration initialized
+[2025-11-24 10:39:35] Success: Hotkeys initialized
+[2025-11-24 10:39:35] Success: UI initialized
+[2025-11-24 10:39:35] Success: Test action
+[2025-11-24 10:39:35] Success: Configuration initialized
+[2025-11-24 10:39:35] Success: Configuration loaded
+[2025-11-24 10:39:35] Success: Item created
+[2025-11-24 10:39:35] Success: Item created
+[2025-11-24 10:39:35] Success: Item renamed
+[2025-11-24 10:39:35] Success: Move file
+[2025-11-24 10:39:35] Success: Item moved
+[2025-11-24 10:39:35] Success: Item permission changed
+[2025-11-24 10:39:35] Success: Clipboard item added
+[2025-11-24 10:39:35] Success: Clipboard item added
+[2025-11-24 10:39:35] Success: Item removed
+[2025-11-24 10:39:35] Success: Item removed
+[2025-11-24 10:39:35] Success: Configuration file closed
+[2025-11-24 10:39:35] Success: Configuration cleaned up
+[2025-11-24 10:39:35] Success: Hotkeys cleaned up
+[2025-11-24 10:39:35] Success: UI cleaned up
+[2025-11-24 10:40:28] Success: Log initialized
+[2025-11-24 10:40:28] Success: Configuration initialized
+[2025-11-24 10:40:28] Success: Hotkeys initialized
+[2025-11-24 10:40:28] Success: UI initialized
+[2025-11-24 10:40:28] Success: Test action
+[2025-11-24 10:40:28] Success: Configuration initialized
+[2025-11-24 10:40:28] Success: Configuration loaded
+[2025-11-24 10:40:28] Success: Item created
+[2025-11-24 10:40:28] Success: Item created
+[2025-11-24 10:40:28] Success: Item renamed
+[2025-11-24 10:40:28] Success: Move file
+[2025-11-24 10:40:28] Success: Item moved
+[2025-11-24 10:40:28] Success: Item permission changed
+[2025-11-24 10:40:28] Success: Clipboard item added
+[2025-11-24 10:40:28] Success: Clipboard item added
+[2025-11-24 10:40:28] Success: Item removed
+[2025-11-24 10:40:28] Success: Item removed
+[2025-11-24 10:40:28] Success: UI cleaned up
+[2025-11-24 10:40:28] Success: Hotkeys cleaned up
+[2025-11-24 10:40:28] Success: Configuration cleaned up
+[2025-11-24 10:40:40] Success: Log initialized
+[2025-11-24 10:40:40] Success: Test action
+[2025-11-24 10:40:40] Success: Configuration initialized
+[2025-11-24 10:40:40] Success: Configuration loaded
+[2025-11-24 10:40:40] Success: Item created
+[2025-11-24 10:40:40] Success: Item created
+[2025-11-24 10:40:40] Success: Item renamed
+[2025-11-24 10:40:40] Success: Move file
+[2025-11-24 10:40:40] Success: Item moved
+[2025-11-24 10:40:40] Success: Item permission changed
+[2025-11-24 10:40:40] Success: Clipboard item added
+[2025-11-24 10:40:40] Success: Clipboard item added
+[2025-11-24 10:40:40] Success: Item removed
+[2025-11-24 10:40:40] Success: Item removed
+[2025-11-24 10:40:58] Success: Log initialized
+[2025-11-24 10:40:58] Success: Test action
+[2025-11-24 10:40:58] Success: Configuration initialized
+[2025-11-24 10:40:58] Success: Configuration loaded
+[2025-11-24 10:40:58] Success: Item created
+[2025-11-24 10:40:58] Success: Item created
+[2025-11-24 10:40:58] Success: Item renamed
+[2025-11-24 10:40:58] Success: Move file
+[2025-11-24 10:40:58] Success: Item moved
+[2025-11-24 10:40:58] Success: Item permission changed
+[2025-11-24 10:40:58] Success: Clipboard item added
+[2025-11-24 10:40:58] Success: Clipboard item added
+[2025-11-24 10:40:58] Success: Item removed
+[2025-11-24 10:40:58] Success: Item removed
+[2025-11-24 10:51:30] Success: Log initialized
+[2025-11-24 10:51:30] Success: Configuration initialized
+[2025-11-24 10:51:30] Success: Hotkeys initialized
+[2025-11-24 10:51:30] Success: UI initialized
+[2025-11-24 10:51:30] Success: Test action
+[2025-11-24 10:51:30] Success: Configuration initialized
+[2025-11-24 10:51:30] Success: Configuration loaded
+[2025-11-24 10:51:30] Success: Item created
+[2025-11-24 10:51:30] Success: Item created
+[2025-11-24 10:51:30] Success: Item renamed
+[2025-11-24 10:51:30] Success: Move file
+[2025-11-24 10:51:30] Success: Item moved
+[2025-11-24 10:51:30] Success: Item permission changed
+[2025-11-24 10:51:30] Success: Clipboard item added
+[2025-11-24 10:51:30] Success: Clipboard item added
+[2025-11-24 10:51:30] Success: Item removed
+[2025-11-24 10:51:30] Success: Item removed
+[2025-11-24 10:51:30] Success: UI cleaned up
+[2025-11-24 10:51:30] Success: Hotkeys cleaned up
+[2025-11-24 10:51:30] Success: Configuration cleaned up
+[2025-11-24 10:51:47] Success: Log initialized
+[2025-11-24 10:51:47] Success: Configuration initialized
+[2025-11-24 10:51:47] Success: Hotkeys initialized
+[2025-11-24 10:51:47] Success: UI initialized
+[2025-11-24 10:51:47] Success: Test action
+[2025-11-24 10:51:47] Success: Configuration initialized
+[2025-11-24 10:51:47] Success: Configuration loaded
+[2025-11-24 10:51:47] Success: Item created
+[2025-11-24 10:51:47] Success: Item created
+[2025-11-24 10:51:47] Success: Item renamed
+[2025-11-24 10:51:47] Success: Move file
+[2025-11-24 10:51:47] Success: Item moved
+[2025-11-24 10:51:47] Success: Item permission changed
+[2025-11-24 10:51:47] Success: Clipboard item added
+[2025-11-24 10:51:47] Success: Clipboard item added
+[2025-11-24 10:51:47] Success: Item removed
+[2025-11-24 10:51:47] Success: Item removed
+[2025-11-24 10:51:47] Success: UI cleaned up
+[2025-11-24 10:51:47] Success: Hotkeys cleaned up
+[2025-11-24 10:51:47] Success: Configuration cleaned up
+[2025-11-24 10:54:42] Success: Log initialized
+[2025-11-24 10:54:42] Success: Configuration initialized
+[2025-11-24 10:54:42] Success: Hotkeys initialized
+[2025-11-24 10:54:42] Success: UI initialized
+[2025-11-24 10:54:42] Success: Test action
+[2025-11-24 10:54:42] Success: Configuration loaded
+[2025-11-24 10:54:42] Success: Item created
+[2025-11-24 10:54:42] Success: Item created
+[2025-11-24 10:54:42] Success: Item renamed
+[2025-11-24 10:54:42] Success: Move file
+[2025-11-24 10:54:42] Success: Item moved
+[2025-11-24 10:54:42] Success: Item permission changed
+[2025-11-24 10:54:42] Success: Clipboard item added
+[2025-11-24 10:54:42] Success: Clipboard item added
+[2025-11-24 10:54:42] Success: Item removed
+[2025-11-24 10:54:42] Success: Item removed
+[2025-11-24 10:54:42] Success: UI cleaned up
+[2025-11-24 10:54:42] Success: Hotkeys cleaned up
+[2025-11-24 10:54:42] Success: Configuration cleaned up
+[2025-11-24 10:56:17] Success: Log initialized
+[2025-11-24 10:56:17] Success: Configuration initialized
+[2025-11-24 10:56:17] Success: Hotkeys initialized
+[2025-11-24 10:56:17] Success: UI initialized
+[2025-11-24 10:56:17] Success: Test action
+[2025-11-24 10:56:17] Success: Configuration loaded
+[2025-11-24 10:56:17] Success: Item created
+[2025-11-24 10:56:17] Success: Item created
+[2025-11-24 10:56:17] Success: Item renamed
+[2025-11-24 10:56:17] Success: Move file
+[2025-11-24 10:56:17] Success: Item moved
+[2025-11-24 10:56:17] Success: Item permission changed
+[2025-11-24 10:56:17] Success: Clipboard item added
+[2025-11-24 10:56:17] Success: Clipboard item added
+[2025-11-24 10:56:17] Success: Item removed
+[2025-11-24 10:56:17] Success: Item removed
+[2025-11-24 10:56:17] Success: UI cleaned up
+[2025-11-24 10:56:17] Success: Hotkeys cleaned up
+[2025-11-24 10:56:17] Success: Configuration cleaned up

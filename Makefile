@@ -1,4 +1,4 @@
-CFLAGS = -Wall -Wextra -I"src/include"
+CFLAGS = -Wall -Wextra -I"include/" -g
 SRC_DIR = src
 OBJ_DIR = build
 BIN_DIR = bin
@@ -20,6 +20,9 @@ $(TARGET): $(OBJS)
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	mkdir -p $(OBJ_DIR)
 	cc $(CFLAGS) -c $< -o $@
+
+install: $(TARGET)
+	cp $(TARGET) /usr/local/bin
 
 clean:
 	rm -rf $(OBJ_DIR) $(BIN_DIR)

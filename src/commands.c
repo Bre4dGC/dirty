@@ -1,8 +1,8 @@
 #include "commands.h"
 #include "logs.h"
 
-int command_execute(const command_t command)
+int cmd_execute(const command_t cmd)
 {
-        // TODO: Implement command execution logic
-        return log_status(SUCCESS, "Command executed");
+    // TODO: Implement cmd execution logic
+    return log_report(REPORT_SUCCESS, "Command executed");
 }
