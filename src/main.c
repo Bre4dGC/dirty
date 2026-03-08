@@ -4,9 +4,8 @@
 #include <unistd.h>
 
 #include "ui.h"
-#include "fs.h"
+#include "filesystem.h"
 #include "logs.h"
-#include "config.h"
 #include "clipboard.h"
 #include "commands.h"
 #include "hotkeys.h"
@@ -38,7 +37,7 @@ int main()
 
     assert(cb_copy(moved_file_path) == REPORT_SUCCESS);
     assert(cb_cut(test_dir_path) == REPORT_SUCCESS);
-    // assert(cb_paste("pasted_file.txt", 0) == REPORT_SUCCESS);
+    assert(cb_paste("pasted_file.txt", 0) == REPORT_SUCCESS);
 
     assert(fs_remove(moved_file_path) == REPORT_SUCCESS);
     assert(fs_remove(test_dir_path) == REPORT_SUCCESS);

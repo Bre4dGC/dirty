@@ -6,8 +6,8 @@
 #define CLIPBOARD_LIMIT 5
 
 typedef struct {
-    char *path;
-    char *name;
+    char* path;
+    char* name;
     bool is_cut;
 } cb_item_t;
 

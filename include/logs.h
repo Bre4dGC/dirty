@@ -14,6 +14,5 @@ typedef enum {
 } log_report_t;
 
 int log_init();
-void log_fmt(const char *fmt, ...);
 int log_report(const log_report_t rep_code, const char *act_msg);
 int log_cleanup();

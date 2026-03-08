@@ -2,7 +2,7 @@
 
 #include <stdint.h>
 
-#include "fs.h"
+#include "filesystem.h"
 #include "clipboard.h"
 #include "commands.h"
 

@@ -1,0 +1,11 @@
+#pragma once
+
+#ifdef THEME_DARK
+#define BACKGROUND_COLOR 0x000000
+#define FOREGROUND_COLOR 0xFFFFFF
+#endif
+
+#ifdef THEME_LIGHT
+#define BACKGROUND_COLOR 0xFFFFFF
+#define FOREGROUND_COLOR 0x000000
+#endif

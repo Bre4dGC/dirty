@@ -2,7 +2,7 @@
 #include <stdbool.h>
 #include <unistd.h>
 
-#include "fs.h"
+#include "filesystem.h"
 #include "logs.h"
 
 int fs_open(const char *path, const bool is_dir)

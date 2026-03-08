@@ -1,3 +1,5 @@
+#include <ftxui/dom/elements.hpp>
+
 #include "ui.h"
 #include "logs.h"
 

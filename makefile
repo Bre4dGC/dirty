@@ -1,4 +1,4 @@
-CFLAGS = -Wall -Wextra -I"include/" -g
+CFLAGS = -Wall -Wextra -pedantic -I"include/" -g
 SRC_DIR = src
 OBJ_DIR = build
 BIN_DIR = bin
