@@ -1,40 +1,33 @@
+#include <ftxui/component/component.hpp>
+#include <ftxui/component/screen_interactive.hpp>
 #include <ftxui/dom/elements.hpp>
+#include <ftxui/dom/table.hpp>
+#include <ftxui/screen/color.hpp>
 
-#include "ui.h"
-#include "logs.h"
+#include <dirent.h>
+#include <cstring>
+#include <fstream>
+#include <sstream>
+#include <string>
+#include <vector>
 
-int ui_init(void)
+#include "ui.hpp"
+#include "logs.hpp"
+#include "filesystem.hpp"
+#include "clipboard.hpp"
+#include "commands.hpp"
+
+/* description of ui
+left main section - file browser with directory path on top
+right main section - content of selected item (directory, text file, image) with item name on top
+right additional section - item info, recently visited items, clipboard
+bottom section - single command line
+*/
+
+namespace dirty
 {
-    // TODO: Implement UI initialization logic
-    return log_report(REPORT_SUCCESS, "UI initialized");
-}
+    namespace ui
+    {
 
-int ui_run(void)
-{
-    // TODO: Implement UI running logic
-    return log_report(REPORT_SUCCESS, "UI running");
-}
-
-int ui_update(void)
-{
-    // TODO: Implement UI updating logic
-    return log_report(REPORT_SUCCESS, "UI updated");
-}
-
-int ui_draw(void)
-{
-    // TODO: Implement UI drawing logic
-    return log_report(REPORT_SUCCESS, "UI drawn");
-}
-
-int ui_handle_input(void)
-{
-    // TODO: Implement UI input handling logic
-    return log_report(REPORT_SUCCESS, "UI input handled");
-}
-
-int ui_cleanup(void)
-{
-    // TODO: Implement UI cleanup logic
-    return log_report(REPORT_SUCCESS, "UI cleaned up");
+    }
 }
