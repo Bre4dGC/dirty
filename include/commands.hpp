@@ -4,6 +4,7 @@
 
 #include "filesystem.hpp"
 #include "clipboard.hpp"
+#include "logs.hpp"
 
 namespace dirty
 {
@@ -23,11 +24,14 @@ namespace dirty
 
         class command
         {
+        private:
             std::string name;
             std::string description;
             std::string options;
 
-            int execute(void);
+        public:
+            command(const std::string name, const std::string description, const std::string options);
+            log::type execute(void);
         };
     }
 }

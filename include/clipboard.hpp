@@ -3,6 +3,7 @@
 #include <string>
 
 #include "filesystem.hpp"
+#include "logs.hpp"
 
 #define CLIPBOARD_LIMIT 5
 
@@ -19,12 +20,15 @@ namespace dirty
 
         class clipboard
         {
+        private:
             cb::item items[CLIPBOARD_LIMIT];
             int selected;
 
-            int copy(fs::item item);
-            int cut(fs::item item);
-            int paste(fs::directory dir, const int index);
+        public:
+            clipboard();
+            log::type add(const cb::item item, const bool is_cut);
+            log::type paste(fs::directory dir, const int index);
+            log::type clear(void);
         };
     }
 }

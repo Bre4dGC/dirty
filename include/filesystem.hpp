@@ -2,6 +2,8 @@
 
 #include <string>
 
+#include "logs.hpp"
+
 namespace dirty
 {
     namespace fs
@@ -23,17 +25,22 @@ namespace dirty
 
         class directory
         {
-            fs::item *items;
+        private:
+            std::vector<fs::item> items;
             std::string path;
             int offset;
             int selected;
+            
+        public:
+            directory(const std::string path);
 
-            int open(void);
-            int create(const std::string name, const bool is_dir);
-            int rename(const std::string old_name, const std::string new_name);
-            int move(const std::string dest);
-            int chmod(const fs::perm perm);
-            int remove(void);
+            log::type open(void);
+            log::type create(const std::string name, const bool is_dir);
+            log::type rename(const std::string old_name, const std::string new_name);
+            log::type move(const std::string dest);
+            log::type copy(const std::string dest);
+            log::type chmod(const fs::perm perm);
+            log::type remove(void);
         };
     }
 }

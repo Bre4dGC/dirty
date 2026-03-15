@@ -12,7 +12,6 @@
 #include <vector>
 
 #include "ui.hpp"
-#include "logs.hpp"
 #include "filesystem.hpp"
 #include "clipboard.hpp"
 #include "commands.hpp"
@@ -28,6 +27,34 @@ namespace dirty
 {
     namespace ui
     {
+        log::type init(void)
+        {
+            // TODO: implement
+        }
 
+        log::type run(void)
+        {
+            // TODO: implement
+        }
+
+        log::type update(void)
+        {
+            // TODO: implement
+        }
+
+        log::type draw(void)
+        {
+            // TODO: implement
+        }
+
+        log::type handle_input(void)
+        {
+            // TODO: implement
+        }
+
+        log::type cleanup(void)
+        {
+            // TODO: implement
+        }
     }
 }

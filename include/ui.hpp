@@ -1,5 +1,7 @@
 #pragma once
 
+#include "logs.hpp"
+
 namespace dirty
 {
     namespace ui
@@ -21,11 +23,11 @@ namespace dirty
             IMAGE
         };
 
-        int init(void);
-        int run(void);
-        int update(void);
-        int draw(void);
-        int handle_input(void);
-        int cleanup(void);
+        log::type init(void);
+        log::type run(void);
+        log::type update(void);
+        log::type draw(void);
+        log::type handle_input(void);
+        log::type cleanup(void);
     }
 }

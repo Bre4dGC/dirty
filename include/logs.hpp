@@ -18,6 +18,6 @@ namespace dirty
             INVALID_ARGUMENT_ERROR,
         };
 
-        int report(const log::type code, const std::string action);
+        log::type report(const log::type code, const std::string action);
     }
 }

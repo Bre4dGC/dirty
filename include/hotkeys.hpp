@@ -3,6 +3,7 @@
 #include <string>
 
 #include "commands.hpp"
+#include "logs.hpp"
 
 namespace dirty
 {
@@ -10,10 +11,13 @@ namespace dirty
     {
         class hotkey
         {
+        private:
             std::string comb;
             cmd::command cmd;
-
-            int execute(void);
+            
+        public:
+            hotkey(const std::string comb, const cmd::command cmd);
+            log::type execute(void);
         };
     }
 }
